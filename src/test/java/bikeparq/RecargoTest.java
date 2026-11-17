@@ -18,4 +18,17 @@ class RecargoTest {
         // Verificar
         assertEquals(5000, total);
     }
+
+    @Test
+    void tarifaTresMilALas10NoTieneRecargo() {
+        // Preparar
+        int tarifa = 3000;
+        int horaEntrada = 10;
+
+        // Ejecutar
+        int total = Recargo.aplicarRecargoNocturno(tarifa, horaEntrada);
+
+        // Verificar
+        assertEquals(3000, total);
+    }
 }
