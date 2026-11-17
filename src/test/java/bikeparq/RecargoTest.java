@@ -34,6 +34,32 @@ class RecargoTest {
     }
 
     @Test
+    void tarifaTresMilALas20PagaCincoMilPorqueEmpiezaLaNoche() {
+        // Preparar
+        int tarifa = 3000;
+        int horaEntrada = 20;
+
+        // Ejecutar
+        int total = Recargo.aplicarRecargoNocturno(tarifa, horaEntrada);
+
+        // Verificar
+        assertEquals(5000, total);
+    }
+
+    @Test
+    void tarifaTresMilALas19NoTieneRecargoPorqueAunEsDeDia() {
+        // Preparar
+        int tarifa = 3000;
+        int horaEntrada = 19;
+
+        // Ejecutar
+        int total = Recargo.aplicarRecargoNocturno(tarifa, horaEntrada);
+
+        // Verificar
+        assertEquals(3000, total);
+    }
+
+    @Test
     void tarifaCeroALas23NoTieneRecargo() {
         // Preparar
         int tarifa = 0;
