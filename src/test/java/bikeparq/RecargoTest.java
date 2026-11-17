@@ -1,6 +1,7 @@
 package bikeparq;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,16 @@ class RecargoTest {
 
         // Verificar
         assertEquals(3000, total);
+    }
+
+    @Test
+    void hora24LanzaIllegalArgumentException() {
+        // Preparar
+        int tarifa = 3000;
+        int horaEntrada = 24;
+
+        // Ejecutar y verificar
+        assertThrows(IllegalArgumentException.class,
+                () -> Recargo.aplicarRecargoNocturno(tarifa, horaEntrada));
     }
 }
