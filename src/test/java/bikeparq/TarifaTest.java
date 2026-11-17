@@ -7,5 +7,40 @@ import org.junit.jupiter.api.Test;
 
 class TarifaTest {
 
-    // PUNTO 1: escriba aquí las pruebas CP-01, CP-02 y CP-03 del enunciado.
+    @Test
+    void cp01CarroSesentaMinutosPagaTresMil() {
+        // Preparar
+        int minutos = 60;
+        String tipo = "carro";
+
+        // Ejecutar
+        int tarifa = Tarifa.calcularTarifa(minutos, tipo);
+
+        // Verificar
+        assertEquals(3000, tarifa);
+    }
+
+    @Test
+    void cp02MotoDiezMinutosNoPagaPorTiempoDeGracia() {
+        // Preparar
+        int minutos = 10;
+        String tipo = "moto";
+
+        // Ejecutar
+        int tarifa = Tarifa.calcularTarifa(minutos, tipo);
+
+        // Verificar
+        assertEquals(0, tarifa);
+    }
+
+    @Test
+    void cp03TipoBicicletaLanzaIllegalArgumentException() {
+        // Preparar
+        int minutos = 60;
+        String tipo = "bicicleta";
+
+        // Ejecutar y verificar
+        assertThrows(IllegalArgumentException.class,
+                () -> Tarifa.calcularTarifa(minutos, tipo));
+    }
 }
