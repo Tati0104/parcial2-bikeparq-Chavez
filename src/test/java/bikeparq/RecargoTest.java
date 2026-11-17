@@ -34,6 +34,19 @@ class RecargoTest {
     }
 
     @Test
+    void tarifaCeroALas23NoTieneRecargo() {
+        // Preparar
+        int tarifa = 0;
+        int horaEntrada = 23;
+
+        // Ejecutar
+        int total = Recargo.aplicarRecargoNocturno(tarifa, horaEntrada);
+
+        // Verificar
+        assertEquals(0, total);
+    }
+
+    @Test
     void hora24LanzaIllegalArgumentException() {
         // Preparar
         int tarifa = 3000;
